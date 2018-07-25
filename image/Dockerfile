@@ -1,7 +1,5 @@
-# Use osixia/light-baseimage
-# sources: https://github.com/osixia/docker-light-baseimage
-FROM osixia/light-baseimage:1.1.1
-MAINTAINER Bertrand Gouny <bertrand.gouny@osixia.net>
+FROM agenterp/docker-baseimage-armhf:latest
+MAINTAINER Dennis Uhlemann <dennis.uhlemann@agenterp.com>
 
 ARG LDAP_OPENLDAP_GID
 ARG LDAP_OPENLDAP_UID
@@ -33,8 +31,6 @@ RUN echo "path-include /usr/share/doc/krb5*" >> /etc/dpkg/dpkg.cfg.d/docker && a
 # Add service directory to /container/service
 ADD service /container/service
 
-# Use baseimage install-service script
-# https://github.com/osixia/docker-light-baseimage/blob/stable/image/tool/install-service
 RUN /container/tool/install-service
 
 # Add default env variables
